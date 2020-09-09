@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  # custom routes
+  get '/' => 'sessions#welcome'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/signup' => 'users#new'
+  delete '/logout' => 'sessions#destroy'
+
+  # resource defined routes
   resources :notes
   resources :ed_pursuits
   resources :ed_types

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_002237) do
+ActiveRecord::Schema.define(version: 2020_09_09_002954) do
 
   create_table "ed_pursuits", force: :cascade do |t|
     t.integer "ed_type_id"
@@ -22,7 +22,9 @@ ActiveRecord::Schema.define(version: 2020_09_09_002237) do
     t.integer "duration_d"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["ed_type_id"], name: "index_ed_pursuits_on_ed_type_id"
+    t.index ["user_id"], name: "index_ed_pursuits_on_user_id"
   end
 
   create_table "ed_types", force: :cascade do |t|
@@ -50,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_002237) do
   end
 
   add_foreign_key "ed_pursuits", "ed_types"
+  add_foreign_key "ed_pursuits", "users"
   add_foreign_key "notes", "ed_pursuits"
   add_foreign_key "notes", "users"
 end

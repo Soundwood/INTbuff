@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_002954) do
+ActiveRecord::Schema.define(version: 2020_09_09_130059) do
 
   create_table "ed_pursuits", force: :cascade do |t|
     t.integer "ed_type_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_002954) do
   end
 
   create_table "ed_types", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

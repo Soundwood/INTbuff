@@ -1,0 +1,2 @@
+class EdPursuit < ApplicationRecord
+end

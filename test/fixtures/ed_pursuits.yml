@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ed_type: 
+  name: MyString
+  subject: MyString
+  provider: MyString
+  instructor: MyString
+  start_date: 2020-09-08 19:17:27
+  duration_d: 1
+
+two:
+  ed_type: 
+  name: MyString
+  subject: MyString
+  provider: MyString
+  instructor: MyString
+  start_date: 2020-09-08 19:17:27
+  duration_d: 1

@@ -1,0 +1,9 @@
+<h1> All of your Notes for <%=  @index_title %> </h1>
+
+<ol>
+<% @notes.each do |n| %>
+    <li> <%= link_to "#{n.ed_pursuit.name}", note_path(n) %> </li>
+    <%= n.title %><br>
+    <%= n.content %><br>
+<% end %>
+</ol>

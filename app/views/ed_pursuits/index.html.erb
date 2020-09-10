@@ -1,0 +1,7 @@
+<h1> These are all of your educational Pursuits! </h1>
+
+<% @ed_pursuits.each do |e| %>
+    <div>
+    <%= link_to e.name, ed_pursuit_path(e.id) %>
+    </div>
+<% end %>

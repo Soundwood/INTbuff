@@ -1,0 +1,34 @@
+<%= render partial: '/layouts/errors', locals: {object: @ed_pursuit}  %>
+
+<%= form_for(@ed_pursuit) do |f| %>
+    <div class="field">
+    <%= f.label :ed_type_id, 'Education Type' %>
+    <%= f.collection_select :ed_type_id, EdType.all, :id, :name  %>
+    </div>
+    <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    </div>
+    <div class="field">
+    <%= f.label :subject %>
+    <%= f.text_field :subject %>
+    </div>
+    <div class="field">
+    <%= f.label :provider %>
+    <%= f.text_field :provider %>
+    </div>
+    <div class="field">
+    <%= f.label :instructor %>
+    <%= f.text_field :instructor %>
+    </div>
+    <div class="field">
+    <%= f.label :start_date, 'Start Date' %>
+    <%= f.text_field :start_date %>
+    </div>
+    <div class="field">
+    <%= f.label :duration_d, 'Duration in Days' %>
+    <%= f.text_field :duration_d %>
+    </div>
+    <div class="field">
+    <%= f.submit %>
+<% end %>

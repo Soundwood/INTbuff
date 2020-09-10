@@ -1,0 +1,7 @@
+<div>
+Title: <%= @note.title %><br>
+Content: <%= @note.content %><br>
+</div>
+<div>
+<%= link_to "Edit #{@note.title}", edit_note_path(@note) if @note.user == current_user %>
+</div>

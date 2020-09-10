@@ -3,4 +3,5 @@ class User < ApplicationRecord
     validates :email, uniqueness: true, presence: true
     has_many :ed_pursuits
     has_many :notes, through: :ed_pursuits
+    has_many :ed_types, through: :ed_pursuits
 end

@@ -8,8 +8,9 @@ Rails.application.routes.draw do
 
   # resource defined routes
   resources :notes
-  resources :ed_pursuits
-  resources :ed_types
-  resources :users
+  resources :ed_pursuits do
+    resources :notes, only: [:new, :index, :show]
+  end
+  resources :users, only: [:new, :create, :destroy, :show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

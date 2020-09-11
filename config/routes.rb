@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   delete '/logout' => 'sessions#destroy'
   get '/welcome' => 'sessions#welcome'
+  get '/auth/:provider/callback' => 'sessions#omniauth'
 
   root to: "user#show"
 

@@ -10,9 +10,14 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by_id(params[:id])
-        redirect_to '/' if !@user # redirect if user does not exist
+        if params[:id]
+            @user = User.find_by_id(params[:id])
+          else
+            @user = current_user
+        end
+        redirect_to '/welcome' if !@user # redirect if user does not exist
     end
+
 
     private
 

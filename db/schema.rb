@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_005244) do
+ActiveRecord::Schema.define(version: 2020_09_10_152338) do
 
   create_table "ed_pursuits", force: :cascade do |t|
     t.integer "ed_type_id"
@@ -33,6 +33,20 @@ ActiveRecord::Schema.define(version: 2020_09_10_005244) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "name"
+    t.string "genre"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "goals_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "goal_id", null: false
+    t.index ["goal_id", "user_id"], name: "index_goals_users_on_goal_id_and_user_id"
+    t.index ["user_id", "goal_id"], name: "index_goals_users_on_user_id_and_goal_id"
   end
 
   create_table "notes", force: :cascade do |t|

@@ -1,0 +1,7 @@
+<h1><strong> Your Goals! </strong></h1>
+
+<ol>
+<% @goals.each do |goal| %>
+    <li><%= link_to goal.name, goal_path(goal.id) %></li>
+<% end %>
+</ol>

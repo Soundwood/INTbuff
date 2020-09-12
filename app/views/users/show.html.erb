@@ -1,5 +1,34 @@
-<h1> Hey there <%= @user.email %> </h1>
+<h1><strong> Hey! <%= @user.email %> </strong></h1>
+<h4> There are lots of things to learn. Grow yourself and keep track of your pursuits here. </h4>
 <br>
-<%= link_to "Create New Educational Pursuit", new_ed_pursuit_path %>
-<br>
-<%= link_to "Create New Notes", new_note_path %>
+<hr>
+<h4><strong>Goals</strong></h4>
+    <div class="w3-row w3-large">
+    <% @user.goals.each do |goal| %>
+      <div class="w3-col s6">
+        <p> <%= link_to "#{goal.name}", goal_path(goal) %> </p>
+      </div>
+    <% end %>
+    </div>
+<hr>
+<h4><strong>Educational Pursuits</strong></h4>
+    <div class="w3-row w3-large">
+    <% @user.ed_pursuits.each do |ep| %>
+      <div class="w3-col s6">
+        <p> <%= link_to "#{ep.name}", ed_pursuit_path(ep) %> </p>
+      </div>
+    <% end %>
+    <div class="w3-col s6">
+    <p><%= link_to "Create A New Educational Pursuit", new_ed_pursuit_path %></p>
+    </div>
+    </div>
+<hr>
+<h4><strong>Notes</strong></h4>
+    <div class="w3-row w3-large">
+    <% @user.notes.each do |note| %>
+      <div class="w3-col s6">
+        <p> <%= link_to "#{note.title}", note_path(note) %> </p>
+      </div>
+    <% end %>
+    </div>
+<hr>

@@ -12,4 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require 'ed_pursuits'
+ *= require 'ed_types'
+ *= require 'notes'
+ *= require 'users'
  */

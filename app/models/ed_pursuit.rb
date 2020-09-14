@@ -11,7 +11,7 @@ class EdPursuit < ApplicationRecord
         self.provider = Provider.find_or_create_by(attributes) if !attributes['name'].empty?
         self.provider
     end
-    def provider_name
-        provider.try(:name)
-    end
+    # def provider_name
+    #     provider.try(:name)
+    # end
 end

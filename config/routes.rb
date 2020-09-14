@@ -9,12 +9,15 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#omniauth'
 
   root to: "user#show"
+  # get '*path' => redirect('/')
 
   # resource defined routes
   resources :notes
+  resources :goals
   resources :ed_pursuits do
     resources :notes, only: [:new, :index, :create]
   end
-  resources :users, only: [:new, :create, :destroy, :show]
+  resources :users
+  # , only: [:new, :create, :destroy, :show, :edit]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

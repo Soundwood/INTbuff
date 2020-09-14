@@ -1,10 +1,12 @@
 class EdPursuitsController < ApplicationController
     before_action :set_ed_pursuit, only:[:show, :edit, :update]
+    before_action :set_user, only:[:index]
     before_action :redirect_if_not_logged_in
     before_action :owner_test, only:[:show, :edit, :update]
 
     def new
         @ed_pursuit = EdPursuit.new
+        @ed_pursuit.build_provider
     end
 
     def create
@@ -18,7 +20,7 @@ class EdPursuitsController < ApplicationController
     end
 
     def index
-        @ed_pursuits = EdPursuit.all.where(user_id: current_user)
+        @ed_pursuits = @user.ed_pursuits
     end
 
     def show
@@ -26,6 +28,7 @@ class EdPursuitsController < ApplicationController
     end
 
     def update
+        # binding.pry
         if @ed_pursuit.update(ed_pursuit_params)
           redirect_to ed_pursuit_path(@ed_pursuit)
         else
@@ -36,13 +39,17 @@ class EdPursuitsController < ApplicationController
     private
 
     def ed_pursuit_params
-        params.require(:ed_pursuit).permit(:ed_type_id, :name, :subject, :provider_id, 
-            :instructor, :start_date, :duration_d, :link, :short_description)
+        params.require(:ed_pursuit).permit(:ed_type_id, :name, :link, :subject, :short_description,
+            :instructor, :start_date, :duration_d, :provider_id, provider_attributes: [:name])
     end
 
     def set_ed_pursuit
         @ed_pursuit = EdPursuit.find_by_id(params[:id])
         redirect_to ed_pursuits_path if !@ed_pursuit
+    end
+
+    def set_user
+        @user = current_user
     end
 
     def owner_test

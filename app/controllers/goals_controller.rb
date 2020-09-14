@@ -1,5 +1,7 @@
 class GoalsController < ApplicationController
     before_action :redirect_if_not_logged_in
+    before_action :set_goal, only:[:show, :edit, :update]
+    before_action :owner_test, only:[:show, :edit, :update]
 
     def new
         @goal = Goal.new
@@ -16,7 +18,6 @@ class GoalsController < ApplicationController
     end
     
     def show
-        @goal = Goal.find_by_id(params[:id])
     end
 
     def index
@@ -26,7 +27,6 @@ class GoalsController < ApplicationController
     end
 
     def edit
-        @goal = Goal.find(params[:id])
     end
 
     def update
@@ -39,7 +39,20 @@ class GoalsController < ApplicationController
 
     private
 
+    def set_goal
+        @goal = Goal.find_by_id(params[:id])
+        redirect_to goals_path if !@goal
+    end
+
     def goal_params
-        params.require(:note).permit(:ed_pursuit_id, :title, :content)
+        params.require(:goal).permit(:name)
+    end
+
+    def owner_test
+        if current_user.id != @goal.user_id
+            redirect_to user_path(current_user)
+            @user = current_user
+            @user.errors.add(:base, "You do not have permission to access that Educational Pursuit")
+        end
     end
 end

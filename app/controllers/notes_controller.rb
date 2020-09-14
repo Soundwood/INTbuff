@@ -1,9 +1,7 @@
 class NotesController < ApplicationController
     before_action :set_note, only:[:show, :edit, :update]
     before_action :redirect_if_not_logged_in
-
-    def index
-    end
+    before_action :owner_test, only:[:show, :edit, :update]
 
     def new
         if @ed_pursuit = EdPursuit.find_by_id(params[:ed_pursuit_id])
@@ -14,6 +12,7 @@ class NotesController < ApplicationController
     end
     
     def create
+        # raise params.inspect
         @note = current_user.notes.build(note_params)
         @note.user_id = current_user.id
         if @note.save
@@ -53,8 +52,17 @@ class NotesController < ApplicationController
     end
 
     def set_note
-        @note = Note.find_by(params[:id])
+        @note = Note.find_by_id(params[:id])
         redirect_to notes_path if !@note
+    end
+
+    def owner_test
+        if current_user.id != @note.user_id
+            # binding.pry
+            # @user = current_user
+            # @user.errors.add(:base, "You do not have permission to access that Note")
+            redirect_to user_path(current_user)
+        end
     end
 
 end

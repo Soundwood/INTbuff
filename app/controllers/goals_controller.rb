@@ -20,19 +20,18 @@ class GoalsController < ApplicationController
     end
 
     def index
-        # if params[:ed_pursuit_id]
-        #     @ed_pursuit = EdPursuit.find_by_id(params[:ed_pursuit_id])
-        #     @index_title = @ed_pursuit.name
-        #     @goals = @ed_pursuit.goals.where(user_id: current_user)
-        # else
-        #     @index_title = "All Educational Pursuits"
-        #     @goals = Note.all.where(user_id: current_user)
-        # end
+        # binding.pry
+        @user = current_user
+        @goals = @user.goals
+    end
+
+    def edit
+        @goal = Goal.find(params[:id])
     end
 
     def update
         if @goal.update(goal_params)
-          redirect_to goal_path(@goal)
+          redirect_to user_path
         else
           render :edit
         end

@@ -1,4 +1,4 @@
-<p> <%= flash[:error] %> </p>
+<p> <%= render partial: 'layouts/errors', locals: {object: @user}  %> </p>
 
 <%= form_for(@user) do |f| %>
     <p>

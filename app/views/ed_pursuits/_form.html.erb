@@ -8,23 +8,23 @@
     <p>
     <%= f.label :name %>
     </p>
-    <%= f.text_field :name, class: "w3-input w3-border" %>
+    <%= f.text_field :name, class: "w3-input" %>
     <p>
     <%= f.label :link %>
     </p>
-    <%= f.text_area :link, class: "w3-input w3-border" %>
+    <%= f.text_area :link, class: "w3-input" %>
     <p>
     <%= f.label :subject %>
     </p>
-    <%= f.text_field :subject, class: "w3-input w3-border" %>
+    <%= f.text_field :subject, class: "w3-input" %>
     <p>
     <%= f.label :short_description %>
     </p>
-    <%= f.text_area :short_description, class: "w3-input w3-border" %>
+    <%= f.text_area :short_description, class: "w3-input" %>
     <p>
     <%= f.label :provider_id, 'Select Existing Provider' %>
     </p>
-    <%= f.collection_select :provider_id, Provider.order_by_name, :id, :name, include_blank: 'Select One', class: "w3-input w3-border" %>
+    <%= f.collection_select :provider_id, Provider.order_by_name, :id, :name, include_blank: 'Select One', class: "w3-input" %>
     <p>
     <p>
     <%= f.label :provider_id, 'Or Create A New Provider' %>
@@ -36,15 +36,15 @@
     <p>
     <%= f.label :instructor %>
     </p>
-    <%= f.text_field :instructor, class: "w3-input w3-border" %>
+    <%= f.text_field :instructor, class: "w3-input" %>
     <p>
     <%= f.label :start_date, 'Start Date' %>
     </p>
-    <%= f.date_select :start_date, class: "w3-input w3-border" %>
+    <%= f.date_select :start_date, class: "w3-input" %>
     <p>
     <%= f.label :duration_d, 'Duration (in Days)' %>
     </p>
-    <%= f.text_field :duration_d, class: "w3-input w3-border" %>
+    <%= f.text_field :duration_d, class: "w3-input" %>
     <p>
     <%= f.submit %>
     </p>

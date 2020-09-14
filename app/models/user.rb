@@ -1,10 +1,12 @@
 class User < ApplicationRecord
     has_secure_password
-    validates :email, uniqueness: true, presence: true
     has_many :ed_pursuits
     has_many :notes, through: :ed_pursuits
     has_many :ed_types, through: :ed_pursuits
-    has_and_belongs_to_many :goals
+    has_many :providers, through: :ed_pursuits
+    has_many :goals
+    validates :email, uniqueness: true, presence: true
+    validates :password_digest, presence: true
 
     def self.from_google_omniauth(auth)
         where(email: auth.info.email).first_or_initialize do |user|

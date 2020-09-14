@@ -1,10 +1,16 @@
-<% render partial: '/layouts/errors', locals: {object: @note} %>
+<%= render partial: '/layouts/errors', locals: {object: @note}  %>
 
 <%= form_for(@note) do |f| %>
+    <p>
     <%= f.label :title %>
-    <%= f.text_field :title %><br>
+    </p>
+    <%= f.text_field :title, class: "w3-input w3-border" %>
+    <p>
     <%= f.label :content %>
-    <%= f.text_area :content %><br>
+    </p>
+    <%= f.text_area :content, class: "w3-input w3-border" %>
     <%= f.hidden_field :ed_pursuit_id %>
+    <p>
     <%= f.submit %>
+    </p>
 <% end %>

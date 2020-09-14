@@ -1,15 +1,20 @@
-<div>
+<p>
 <%= @ed_pursuit.name %><br>
-Type: <%= @ed_pursuit.ed_type_id %><br>
+Link: <%= @ed_pursuit.link %><br>
+Type: <%= @ed_pursuit.ed_type.name %><br>
 Subject: <%= @ed_pursuit.subject %><br>
-Provider: <%= @ed_pursuit.provider %><br>
+Short Description: <%= @ed_pursuit.short_description %><br>
+Provider: <%= @ed_pursuit.provider.name %><br>
 Instructor: <%= @ed_pursuit.instructor %><br>
 Start Date: <%= @ed_pursuit.start_date %><br>
 Duration (in days): <%= @ed_pursuit.duration_d %><br>
+</p>
+<div class="w3-hover-text-green">
+<%= link_to "Edit #{@ed_pursuit.name}", edit_ed_pursuit_path(@ed_pursuit) if @ed_pursuit.user == current_user %>
 </div>
-<div>
-<%= link_to "Edit #{@ed_pursuit.name}", edit_ed_pursuit_path(@ed_pursuit) if @ed_pursuit.user == current_user%>
-</div>
-<div>
+<div class="w3-hover-text-green">
 <%= link_to "See all Notes for #{@ed_pursuit.name}", ed_pursuit_notes_path(@ed_pursuit) %>
+</div>
+<div class="w3-hover-text-green">
+<%= link_to "Create a New Note for #{@ed_pursuit.name}", new_ed_pursuit_note_path(@ed_pursuit) %>
 </div>

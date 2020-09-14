@@ -1,7 +1,11 @@
-<h1> These are all of your educational Pursuits! </h1>
+<h1><strong> Your Educational Pursuits! </strong></h1>
 
+<ol>
 <% @ed_pursuits.each do |e| %>
-    <div>
-    <%= link_to e.name, ed_pursuit_path(e.id) %>
-    </div>
+    <li><%= link_to e.name, ed_pursuit_path(e.id) %></li>
 <% end %>
+</ol>
+
+<div class="w3-col s6">
+    <p><%= link_to "Create A New Educational Pursuit", new_ed_pursuit_path %></p>
+</div>

@@ -1,7 +1,7 @@
-<div>
+<p>
 Title: <%= @note.title %><br>
 Content: <%= @note.content %><br>
-</div>
-<div>
+</p>
+<div class="w3-hover-text-green">
 <%= link_to "Edit #{@note.title}", edit_note_path(@note) if @note.user == current_user %>
 </div>

@@ -9,9 +9,37 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <div><%= render_nav_bar %></div>
+  <body class="w3-content w3-border-left w3-border-right" >
+  <nav class="w3-sidebar w3-light-grey w3-collapse w3-top" style="z-index:3;width:260px" id="mySidebar">
+    <div class="w3-container w3-display-container w3-padding-16">
+      <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
+    </div>
+    <div class="w3-bar-block">
+      <%= render_nav_bar %>
+    </div>
+  </nav>
+  
 
-  <body>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay">
+</div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-white" style="margin-left:260px">
+
+  <!-- Push down content on small screens -->
+  <div class="w3-hide-large" style="margin-top:80px">
+  </div>
+  
+  <div class="w3-container">
+  <!-- THIS IS THE YIELD THE YIELD IS HEREEEEEEEEEEEEE -->
     <%= yield %>
-  </body>
+  </div>
+  
+  <footer class="w3-container w3-padding-16" style="margin-top:32px">Powered by 
+  <a href="https://github.com/Soundwood" title="SOUNDWOOD" target="_blank" class="w3-hover-text-green">SOUNDWOOD</a></footer>
+
+<!-- End page content -->
+</div>
+</body>
 </html>

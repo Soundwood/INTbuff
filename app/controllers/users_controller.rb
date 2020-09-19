@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        @most_goals_user = User.user_with_most_goals[0].email
+        @most_goals_user = User.ordered_by_goals[0].email
         if params[:id]
             @user = User.find_by_id(params[:id])
           else

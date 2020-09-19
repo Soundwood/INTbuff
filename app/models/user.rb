@@ -9,7 +9,7 @@ class User < ApplicationRecord
     validates :password_digest, presence: true
 
     # needs to return the user with the most goals
-    scope :ordered_by_goals, -> { left_joins(:goals).group(:id).order('COUNT(goals.id) DESC') }
+    scope :order_by_goals, -> { left_joins(:goals).group(:id).order('COUNT(goals.id) DESC') }
 
     def self.from_google_omniauth(auth)
         where(email: auth.info.email).first_or_initialize do |user|

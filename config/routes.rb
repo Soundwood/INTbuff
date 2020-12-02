@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   root to: "user#show"
   # get '*path' => redirect('/')
+  # not_found do
+  #   status 404
+  #   erb :failure
+  # end
 
   # resource defined routes
   resources :notes
